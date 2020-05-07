@@ -39,3 +39,33 @@ O website deve ser autônomo, ele deve saber gerir-se sozinho e não precisar de
 
 Para saber exatamente o que falta ser implementado e como deve funcionar o website dirija-se para a seção [Requisitos necessidades e especificações](https://github.com/confcodigo/confcodigo-website#descr)
 
+# <a name="rne"></a> Requisitos necessidades e especificações
+
+## Especificações e exigências funcionais Gerais
+- Gerir actividades da conferência **ConfCodigo**
+  - Anúncios
+  - Vídeos da conferência
+  - Feedbacks com visitantes, participantes ou patrocinadores
+- Gerir  proposições de temas com experiências a partilhar
+  - Temas  que serão apresentados
+- Permitir ao Painel de Admin, aprovar ou reprovar as proposições segundo a pertinência
+  - Especificar Política de pertinência ???
+  - 1- Voto pelo painel/Admin  ( segundo critérios da conferência)
+  - 2- Voto pelas pessoas que estão interessado ou pelo número de inscritos no tema em questão
+- Criação de conta para se inscrever num tema deve ser opcional
+  - Formulário particular para digitar informações pessoais na hora de inscrição
+- Possibilidade dos interessados se inscreverem num ou vários temas
+- Possibilidades de membro da comunidade/site proporem temas
+
+
+## Identificação de Categorias de utilizadores
+| Entidade  | Categoria/Papel/Grupo | Descrição |
+| ------------- |:-------------:| :---------------|
+| Visitante         | Visitante | Vai utilizar o site para conhecer/informar-se do que o projeto/site se trata |
+| Inscrito      | Utilizador   | Utilizará o site para procurar e inscrever-se em temas do seu interesse. Poderá participar em votos de temas em que ele se inscrever |
+| Espectador        | Utilizador     | Pessoa que assistira à uma  conferência. Pessoa confirmada, presente na apresentação |
+| Sugestor  | Utilizador        |  Utilizará o site para submeter suas propostas para uma possível apresentação. Terá número limitado de proposta a fazer |
+| Apresentador     | Utilizador    | Pessoa que vai apresentador um ou vários temas. Confirmado. |
+| Animador     | Utilizador    | Pessoa que vai animar a conferência completa. Utilizará o site para ter acesso aos apresentadores e temas |
+| Membro     | Utilizador    | Alguém que se inscreve no site para fazer parte da comunidade (poderá, propor temas, participar a sondagens ) |
+| Admin     | Administrador    | Membros Activo, e avaliadores de proposta. Estes também poderão participar activamente fazendo apresentação, ou assistindo  a apresentações |
