@@ -69,3 +69,15 @@ Para saber exatamente o que falta ser implementado e como deve funcionar o websi
 | Animador     | Utilizador    | Pessoa que vai animar a conferência completa. Utilizará o site para ter acesso aos apresentadores e temas |
 | Membro     | Utilizador    | Alguém que se inscreve no site para fazer parte da comunidade (poderá, propor temas, participar a sondagens ) |
 | Admin     | Administrador    | Membros Activo, e avaliadores de proposta. Estes também poderão participar activamente fazendo apresentação, ou assistindo  a apresentações |
+
+# <a name="contr"></a> Contribuir
+
+Se quiser contribuir para a o desenvolvimento do website e ajudar-nos a manter uma qualidade elevada e considerável, considere a possibilidade de efectuar revisões e testes de unitários de código fazendo primeiro um pull request. Qualquer feedback dos utilizadores e interessados, mesmo perguntas simples sobre como as coisas funcionam ou porqué foram feitas de uma certa forma, poderá ser usado para melhorar o funcionamento autônomo do website. A revisão de códigos e testes proporcionam estes benefícios:
+
+- Identificar bugs
+- Ajustar as interfaces de acordo com os casos de utilização 
+- Simplificar o código
+- Performance, rapidez
+
+Você pode consultar os pedidos de pull request fechados para ter uma idéia de como as revisões são realizadas. Para dar uma revisão de código basta entrar com a sua conta GitHub e depois adicionar comentários a qualquer pedido de pull request, ou criar um novo issue, não seja tímido!
+
