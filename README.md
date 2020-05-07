@@ -26,3 +26,16 @@ Aqui vão algumas ideias que podem ser partilhadas na conferência :
 - Boas práticas
 
 Objectivo é partilhar, partilhar, partilhar para crescer mais rápido
+
+# <a name="descr"></a> Descrição
+
+Este repositório não se trata da conferência em geral, mas sim da construção do website que vai nos ajudar a gerir a conferência de forma autônoma.
+
+Este software/website está na sua primeira versão oficial. As interfaces podem mudar em resposta às reacções dos utilizadores. Para alterações recentes veja aqui …. **ficheiro sera actualizado quando existir** 
+
+Em geral o website deve gerir as proposições de temas feito pelas pessoas que querem partilhar experiências, também deve avaliar cada tema proposto e selecionar os mais pertinentes, gerir inscrição dos apresentadores, gerir inscrição dos espectadores a um tema de seu interesse.
+
+O website deve ser autônomo, ele deve saber gerir-se sozinho e não precisar de muita intervenção humana. Para isso precisamos de ideias geniais como a sua.
+
+Para saber exatamente o que falta ser implementado e como deve funcionar o website dirija-se para a seção [Requisitos necessidades e especificações](https://github.com/confcodigo/confcodigo-website#descr)
+
