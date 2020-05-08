@@ -111,7 +111,7 @@ Então aqui vão duas convenções a adoptar para nomeação assegurar modularid
 - R.1.1 : Uma e somente uma classe por ficheiro, e uma classe deve fazer somente uma única tarefa.
 
 Por exemplo para uma classe que descreve o comportamento de interação de um membro com a **base de dados** deveria ser assim :
-ficheiro : *cc_membro.py*
+ficheiro : *ccmembro.py*
 ```python
 class CCMembro(object):
  ‘’’ 
@@ -122,15 +122,15 @@ class CCMembro(object):
 
 Por exemplo um se quisermos desenvolver funcionalidades que convertem data universais em data locais,ou textos em datas, isto não é preciso desenvolver uma classe, podemos resolver este problema com função. Como esta funcão nao precisa ir numa classe dedicada, então metemos ela num ficheiro comum que trata-se de formatagem de datas ou texto etc.
 
-Nome do ficheiro : *cc_formatagens.py*
+Nome do ficheiro : *ccformatagens.py*
 ```python
 #Função que converte texto em data
-def CC_converterTextoEmData(dataEmTexto):
+def CCConverterTextoEmData(dataEmTexto):
   # codigo para converter o texto em data vai aqui...
  return textoConvertido
 
 #Função que converte data em texto
-def CC_converterDataEmTexto(data):
+def CCConverterDataEmTexto(data):
  # codigo para converter data em texto vai aqui ...
  return dataConvertida
 ```
@@ -139,7 +139,7 @@ def CC_converterDataEmTexto(data):
 
 Como disse anteriormente uma das das formas de conseguir modularidade é poder diferenciar o que é inteiramente novo, e o que pertence de base ao framework. Para diferenciar precisamos nomear nossas funcionalidades de uma forma particular , aqui vão algumas convenções :
 
-- R.2.0 : Todos nomes devem começar com **CC** (*ConfCodigo*), para sabermos que se trata de uma funcionalidade desenvolvidas por nós, e que não pertence ao framework.
+- R.2.0 : Todos nomes devem começar com **CC** (*ConfCodigo*), para sabermos que se trata de uma funcionalidade desenvolvida por nós, e que não pertence ao framework.
 - R.2.1 : Nome de ficheiros devem refletir o tipo de funcionalidades que o módulo oferece(ou seja, o que se tém dentro). Nome de ficheiros devem ser( tudo minúsculo). Devem começar com *cc* (minúsculo) e seguido do nome desejado(minúsculo), por exemplo supondo que *formatagens* é o nome desejado então o nosso ficheiro será nomeado assim : *cc**formatagens**.py*
 - R.2.2 : Nome de classes devem começar por letra maiúscula, e devem ser precedidos com **CC** (também maiúsculas). 
     Por exemplo, se for uma classe para o utilizador, então a nomeação será assim.  
