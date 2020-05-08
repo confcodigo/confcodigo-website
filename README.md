@@ -70,6 +70,9 @@ Para saber exatamente o que falta ser implementado e como deve funcionar o websi
 | Membro     | Utilizador    | Alguém que se inscreve no site para fazer parte da comunidade (poderá, propor temas, participar a sondagens ) |
 | Admin     | Administrador    | Membros Activo, e avaliadores de proposta. Estes também poderão participar activamente fazendo apresentação, ou assistindo  a apresentações |
 
+
+Para obter mais detalhes sobre as funcionalidades a implementar consulta a lista de User Story a concretizar aqui : [TODO LIST](https://github.com/confcodigo/confcodigo-website/projects/1) 
+
 # <a name="contr"></a> Contribuir
 
 Se quiser contribuir para a o desenvolvimento do website e ajudar-nos a manter uma qualidade elevada e considerável, considere a possibilidade de efectuar revisões e testes de unitários de código fazendo primeiro um pull request. Qualquer feedback dos utilizadores e interessados, mesmo perguntas simples sobre como as coisas funcionam ou porqué foram feitas de uma certa forma, poderá ser usado para melhorar o funcionamento autônomo do website. A revisão de códigos e testes proporcionam estes benefícios:
