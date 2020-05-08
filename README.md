@@ -127,10 +127,10 @@ Nome do ficheiro : *cc_formatagens.py*
 #Função que converte texto em data
 def CC_converterTextoEmData(dataEmTexto):
   # codigo para converter o texto em data vai aqui...
- return dataConvertida
+ return textoConvertido
 
 #Função que converte data em texto
-def CC_converterDataEmTexto(dataEmTexto):
+def CC_converterDataEmTexto(data):
  # codigo para converter data em texto vai aqui ...
  return dataConvertida
 ```
