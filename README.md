@@ -108,7 +108,7 @@ Uma das formas de garantir sucesso é construir o nosso website de forma modular
 É sabido que para alcançar modularidade em *python* é preciso escrever funcionalidades relacionadas em único ficheiro, ou classe, e também a habilidade de diferenciar o que é inteiramente novo, e o que pertence ao framework.
 
 Então aqui vão duas convenções a adoptar para nomeação assegurar modularidade :
-- R.1.1 : Uma e somente uma classe por ficheiro, e uma classe deve fazer somente uma única tarefa.
+- R.1.1 : Uma e somente uma classe por ficheiro, e uma classe deve ter somente uma única Responsabilidade.
 
 Por exemplo para uma classe que descreve o comportamento de interação de um membro com a **base de dados** deveria ser assim :
 ficheiro : *ccmembro.py*
