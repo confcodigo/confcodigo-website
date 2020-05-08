@@ -120,7 +120,7 @@ class CCMembro(object):
 ```
 - R.1.2 : Funcionalidades que não representam modularidade possíveis em formato de classe, devem ser posta em um único ficheiro.
 
-Por exemplo um se quisermos desenvolver funcionalidades que convertem data universais em data locais, isto não é preciso desenvolver uma classe, podemos resolver com uma função. Como esta funcao nao precisa ir numa classe dedicada, então metemos num ficheiro comum que trata-se de formatagem de datas ou texto etc.
+Por exemplo um se quisermos desenvolver funcionalidades que convertem data universais em data locais,ou textos em datas, isto não é preciso desenvolver uma classe, podemos resolver este problema com função. Como esta funcão nao precisa ir numa classe dedicada, então metemos ela num ficheiro comum que trata-se de formatagem de datas ou texto etc.
 
 Nome do ficheiro : *cc_formatagens.py*
 ```python
@@ -135,5 +135,18 @@ def CC_converterDataEmTexto(data):
  return dataConvertida
 ```
 
-## Regra 2 :Nome de de ficheiros e Nome de classes 
-...
+## Regra 2 : Nome de ficheiros, Nome de classes e funções 
+
+Como disse anteriormente uma das das formas de conseguir modularidade é poder diferenciar o que é inteiramente novo, e o que pertence de base ao framework. Para diferenciar precisamos nomear nossas funcionalidades de uma forma particular , aqui vão algumas convenções :
+
+- R.2.0 : Todos nomes devem começar com **CC** (*ConfCodigo*), para sabermos que se trata de uma funcionalidade desenvolvidas por nós, e que não pertence ao framework.
+- R.2.1 : Nome de ficheiros devem refletir o tipo de funcionalidades que o módulo oferece(ou seja, o que se tém dentro). Nome de ficheiros devem ser( tudo minúsculo). Devem começar com *cc* (minúsculo) e seguido do nome desejado(minúsculo), por exemplo supondo que *formatagens* é o nome desejado então o nosso ficheiro será nomeado assim : *cc**formatagens**.py*
+- R.2.2 : Nome de classes devem começar por letra maiúscula, e devem ser precedidos com **CC** (também maiúsculas). 
+    Por exemplo, se for uma classe para o utilizador, então a nomeação será assim.  
+Nome do ficheiro : *ccutilizador.py*
+```python
+class CCUtilizador(object):
+    pass
+```
+R.2.3 : Nome do ficheiro de uma classe é simplesmente o nome da classe mas tudo em minúsculo. Por exemplo para classe *CCUtilizador* o nome do ficheiro seria : ***ccutilizador.py*** 
+
