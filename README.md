@@ -1,7 +1,7 @@
 # confcodigo-website
 Desenvolvimento do site para gerir as conferências, proposições de temas,  inscrições  para assitir as apresentações de temas etc, etc ..
  
- img width="880" height = "80" alt = "Conferencia Codigo"
+ <img width="880" height = "80" alt = "Conferencia Codigo"
     src="https://github.com/confcodigo/confcodigo-website/blob/master/logo/confcodigo.png">
 
 # Índice
