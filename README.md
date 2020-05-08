@@ -81,3 +81,20 @@ Se quiser contribuir para a o desenvolvimento do website e ajudar-nos a manter u
 
 Você pode consultar os pedidos de pull request fechados para ter uma idéia de como as revisões são realizadas. Para dar uma revisão de código basta entrar com a sua conta GitHub e depois adicionar comentários a qualquer pedido de pull request, ou criar um novo issue, não seja tímido!
 
+# <a name="guia"></a> Convenções e regras de programação
+ 
+Nesta seção daremos guias e conselhos do estilo de programação adotado neste projeto, e que você também deve adotar para poder dar o seu contributo e levar este projeto a conhecer o sucesso.
+
+Os comentários e sugestões de melhorias são muito bem-vindos. Tencionamos modificar e alargar esta secção à medida que a nossa compreensão melhora e que a linguagem *Python*, e o framework *Flask* melhoram. Ao comentar, por favor tome nota da introdução que traça os nossos objectivos e abordagem geral.
+
+**Atenção** :
+- Os conjuntos de regras não foram completamente verificados quanto à sua integridade, coerência ou aplicabilidade.
+- Quando você ver os três pontos de interrogação (???) significa que há informações desconhecidas ou falta precisão e exatidão
+- é necessário actualizar certas regras de acordo o site de referência do *Flask* ou *Ptyhon*; muitas fontes pré-Ptyhon3 (anteriores ao python3) são demasiado antigas.
+- Para uma lista mais ou menos actualizada, siga a as regras abaixo
+
+## Regra 1 : Módulos
+...
+
+## Regra 2 :Nome de de ficheiros e Nome de classes 
+...
