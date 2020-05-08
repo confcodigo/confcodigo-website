@@ -8,18 +8,18 @@ Desenvolvimento do site para gerir as conferências, proposições de temas,  in
 - ## [Introdução](#intro)
 - ## [Descrição](#descr)
 - ## [Requisitos necessidades e especificações](#rne)
-- ## [Convenções e regras de programação](#guia)
+- ## [Convenções e estilo de programação](#guia)
 - ## [Contribuir](#contr)
 
 # <a name="intro"></a> Introdução
 
 ***ConfCodigo*** é um projeto que visa criar uma conferência de programadores angolanos com o intuito de partilhar experiências profissionais, particulares, e desafios vividos ou encontrados num projeto. 
 
-Informática, Computação, programação, desenvolvimento de software são área muito vastas e passionantes, e acreditamos que nos próximos anos estas áreas serão cruciais para o desenvolvimento do nosso país. Assim, também acreditamos que uma das formas de respondermos as necessidades para o desenvolvimento do país com estas áreas tão dinâmicas é partilhando experiências, desafios e conhecimentos
+Informática, Computação, programação, desenvolvimento de software são áreas muito vastas e passionantes, e acreditamos que nos próximos anos estas áreas serão cruciais para o desenvolvimento do nosso país. Assim, também acreditamos que uma das formas de respondermos as necessidades para o desenvolvimento do país com estas áreas tão dinâmicas é partilhando experiências, desafios e conhecimentos
 
 >“A partilha de conhecimentos é o acto de amizade mais fundamental. Porque é uma forma de dar algo sem perder algo.” *-Richard Stallman*
 
->“Creio que conhecimento é poder, mas apenas se for a ser partilhado.” *-Desconhecido*
+>“Creio que conhecimento é poder, mas apenas se for partilhado.” *-Desconhecido*
 
 Aqui vão algumas ideias que podem ser partilhadas na conferência :
 
@@ -88,7 +88,7 @@ Se quiser contribuir para a o desenvolvimento do website e ajudar-nos a manter u
 
 Você pode consultar os pedidos de pull request fechados para ter uma idéia de como as revisões são realizadas. Para dar uma revisão de código basta entrar com a sua conta GitHub e depois adicionar comentários a qualquer pedido de pull request, ou criar um novo issue, não seja tímido!
 
-# <a name="guia"></a> Convenções e regras de programação
+# <a name="guia"></a> Convenções e estilo de programação
  
 Nesta seção daremos guias e conselhos do estilo de programação adotado neste projeto, e que você também deve adotar para poder dar o seu contributo e levar este projeto a conhecer o sucesso.
 
@@ -97,11 +97,43 @@ Os comentários e sugestões de melhorias são muito bem-vindos. Tencionamos mod
 **Atenção** :
 - Os conjuntos de regras não foram completamente verificados quanto à sua integridade, coerência ou aplicabilidade.
 - Quando você ver os três pontos de interrogação (???) significa que há informações desconhecidas ou falta precisão e exatidão
-- é necessário actualizar certas regras de acordo o site de referência do *Flask* ou *Ptyhon*; muitas fontes pré-Ptyhon3 (anteriores ao python3) são demasiado antigas.
+- é necessário actualizar certas regras de acordo o site de referência do *Flask* ou *Python*; muitas fontes pré-Python3 (anteriores ao python3) são demasiado antigas.
 - Para uma lista mais ou menos actualizada, siga a as regras abaixo
 
+Queremos que este projeto seja um grande sucesso, e para um software conhecer o sucesso, este, tem de ser flexível e adaptar-se com as mudanças ao longo do do tempo.
+
 ## Regra 1 : Módulos
-...
+Uma das formas de garantir sucesso é construir o nosso website de forma modular, por isso módulo é a primeira convenção a adoptar neste projeto, mas como ? 
+
+É sabido que para alcançar modularidade em *python* é preciso escrever funcionalidades relacionadas em único ficheiro, ou classe, e também a habilidade de diferenciar o que é inteiramente novo, e o que pertence ao framework.
+
+Então aqui vão duas convenções a adoptar para nomeação assegurar modularidade :
+- R.1.1 : Uma e somente uma classe por ficheiro, e uma classe deve fazer somente uma única tarefa.
+
+Por exemplo para uma classe que descreve o comportamento de interação de um membro com a **base de dados** deveria ser assim :
+ficheiro : *cc_membro.py*
+```python
+class CCMembro(object):
+ ‘’’ 
+ Todo codigo relacionado com um membro
+ ‘’’
+```
+- R.1.2 : Funcionalidades que não representam modularidade possíveis em formato de classe, devem ser posta em um único ficheiro.
+
+Por exemplo um se quisermos desenvolver funcionalidades que convertem data universais em data locais, isto não é preciso desenvolver uma classe, podemos resolver com uma função. Como esta funcao nao precisa ir numa classe dedicada, então metemos num ficheiro comum que trata-se de formatagem de datas ou texto etc.
+
+Nome do ficheiro : *cc_formatagens.py*
+```python
+#Função que converte texto em data
+def CC_converterTextoEmData(dataEmTexto):
+  # codigo para converter o texto em data vai aqui...
+ return dataConvertida
+
+#Função que converte data em texto
+def CC_converterDataEmTexto(dataEmTexto):
+ # codigo para converter data em texto vai aqui ...
+ return dataConvertida
+```
 
 ## Regra 2 :Nome de de ficheiros e Nome de classes 
 ...
