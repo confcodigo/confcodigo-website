@@ -8,18 +8,18 @@ Desenvolvimento do site para gerir as conferências, proposições de temas,  in
 - ## [Introdução](#intro)
 - ## [Descrição](#descr)
 - ## [Requisitos necessidades e especificações](#rne)
-- ## [Convenções e regras de programação](#guia)
+- ## [Convenções e estilo de programação](#guia)
 - ## [Contribuir](#contr)
 
 # <a name="intro"></a> Introdução
 
 ***ConfCodigo*** é um projeto que visa criar uma conferência de programadores angolanos com o intuito de partilhar experiências profissionais, particulares, e desafios vividos ou encontrados num projeto. 
 
-Informática, Computação, programação, desenvolvimento de software são área muito vastas e passionantes, e acreditamos que nos próximos anos estas áreas serão cruciais para o desenvolvimento do nosso país. Assim, também acreditamos que uma das formas de respondermos as necessidades para o desenvolvimento do país com estas áreas tão dinâmicas é partilhando experiências, desafios e conhecimentos
+Informática, Computação, programação, desenvolvimento de software são áreas muito vastas e passionantes, e acreditamos que nos próximos anos estas áreas serão cruciais para o desenvolvimento do nosso país. Assim, também acreditamos que uma das formas de respondermos as necessidades para o desenvolvimento do país com estas áreas tão dinâmicas é partilhando experiências, desafios e conhecimentos
 
 >“A partilha de conhecimentos é o acto de amizade mais fundamental. Porque é uma forma de dar algo sem perder algo.” *-Richard Stallman*
 
->“Creio que conhecimento é poder, mas apenas se for a ser partilhado.” *-Desconhecido*
+>“Creio que conhecimento é poder, mas apenas se for partilhado.” *-Desconhecido*
 
 Aqui vão algumas ideias que podem ser partilhadas na conferência :
 
@@ -88,7 +88,7 @@ Se quiser contribuir para a o desenvolvimento do website e ajudar-nos a manter u
 
 Você pode consultar os pedidos de pull request fechados para ter uma idéia de como as revisões são realizadas. Para dar uma revisão de código basta entrar com a sua conta GitHub e depois adicionar comentários a qualquer pedido de pull request, ou criar um novo issue, não seja tímido!
 
-# <a name="guia"></a> Convenções e regras de programação
+# <a name="guia"></a> Convenções e estilo de programação
  
 Nesta seção daremos guias e conselhos do estilo de programação adotado neste projeto, e que você também deve adotar para poder dar o seu contributo e levar este projeto a conhecer o sucesso.
 
@@ -97,11 +97,56 @@ Os comentários e sugestões de melhorias são muito bem-vindos. Tencionamos mod
 **Atenção** :
 - Os conjuntos de regras não foram completamente verificados quanto à sua integridade, coerência ou aplicabilidade.
 - Quando você ver os três pontos de interrogação (???) significa que há informações desconhecidas ou falta precisão e exatidão
-- é necessário actualizar certas regras de acordo o site de referência do *Flask* ou *Ptyhon*; muitas fontes pré-Ptyhon3 (anteriores ao python3) são demasiado antigas.
+- é necessário actualizar certas regras de acordo o site de referência do *Flask* ou *Python*; muitas fontes pré-Python3 (anteriores ao python3) são demasiado antigas.
 - Para uma lista mais ou menos actualizada, siga a as regras abaixo
 
-## Regra 1 : Módulos
-...
+Queremos que este projeto seja um grande sucesso, e para um software conhecer o sucesso, este, tem de ser flexível e adaptar-se com as mudanças ao longo do do tempo.
 
-## Regra 2 :Nome de de ficheiros e Nome de classes 
-...
+## Regra 1 : Módulos
+Uma das formas de garantir sucesso é construir o nosso website de forma modular, por isso módulo é a primeira convenção a adoptar neste projeto, mas como ? 
+
+É sabido que para alcançar modularidade em *python* é preciso escrever funcionalidades relacionadas em único ficheiro, ou classe, e também a habilidade de diferenciar o que é inteiramente novo, e o que pertence ao framework.
+
+Então aqui vão duas convenções a adoptar para nomeação assegurar modularidade :
+- R.1.1 : Uma e somente uma classe por ficheiro, e uma classe deve ter somente uma única Responsabilidade.
+
+Por exemplo para uma classe que descreve o comportamento de interação de um membro com a **base de dados** deveria ser assim :
+ficheiro : *ccmembro.py*
+```python
+class CCMembro(object):
+ ‘’’ 
+ Todo codigo relacionado com um membro
+ ‘’’
+```
+- R.1.2 : Funcionalidades que não representam modularidade possíveis em formato de classe, devem ser posta em um único ficheiro.
+
+Por exemplo um se quisermos desenvolver funcionalidades que convertem data universais em data locais,ou textos em datas, isto não é preciso desenvolver uma classe, podemos resolver este problema com função. Como esta funcão nao precisa ir numa classe dedicada, então metemos ela num ficheiro comum que trata-se de formatagem de datas ou texto etc.
+
+Nome do ficheiro : *ccformatagens.py*
+```python
+#Função que converte texto em data
+def CCConverterTextoEmData(dataEmTexto):
+  # codigo para converter o texto em data vai aqui...
+ return textoConvertido
+
+#Função que converte data em texto
+def CCConverterDataEmTexto(data):
+ # codigo para converter data em texto vai aqui ...
+ return dataConvertida
+```
+
+## Regra 2 : Nome de ficheiros, Nome de classes e funções 
+
+Como disse anteriormente uma das das formas de conseguir modularidade é poder diferenciar o que é inteiramente novo, e o que pertence de base ao framework. Para diferenciar precisamos nomear nossas funcionalidades de uma forma particular , aqui vão algumas convenções :
+
+- R.2.0 : Todos nomes devem começar com **CC** (*ConfCodigo*), para sabermos que se trata de uma funcionalidade desenvolvida por nós, e que não pertence ao framework.
+- R.2.1 : Nome de ficheiros devem refletir o tipo de funcionalidades que o módulo oferece(ou seja, o que se tém dentro). Nome de ficheiros devem ser( tudo minúsculo). Devem começar com *cc* (minúsculo) e seguido do nome desejado(minúsculo), por exemplo supondo que *formatagens* é o nome desejado então o nosso ficheiro será nomeado assim : *cc**formatagens**.py*
+- R.2.2 : Nome de classes devem começar por letra maiúscula, e devem ser precedidos com **CC** (também maiúsculas). 
+    Por exemplo, se for uma classe para o utilizador, então a nomeação será assim.  
+Nome do ficheiro : *ccutilizador.py*
+```python
+class CCUtilizador(object):
+    pass
+```
+R.2.3 : Nome do ficheiro de uma classe é simplesmente o nome da classe mas tudo em minúsculo. Por exemplo para classe *CCUtilizador* o nome do ficheiro seria : ***ccutilizador.py*** 
+
