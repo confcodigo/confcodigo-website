@@ -125,12 +125,12 @@ Por exemplo um se quisermos desenvolver funcionalidades que convertem data unive
 Nome do ficheiro : *ccformatagens.py*
 ```python
 #Função que converte texto em data
-def CCConverterTextoEmData(dataEmTexto):
+def CCconverterTextoEmData(dataEmTexto):
   # codigo para converter o texto em data vai aqui...
  return textoConvertido
 
 #Função que converte data em texto
-def CCConverterDataEmTexto(data):
+def CCconverterDataEmTexto(data):
  # codigo para converter data em texto vai aqui ...
  return dataConvertida
 ```
@@ -148,5 +148,4 @@ Nome do ficheiro : *ccutilizador.py*
 class CCUtilizador(object):
     pass
 ```
-R.2.3 : Nome do ficheiro de uma classe é simplesmente o nome da classe mas tudo em minúsculo. Por exemplo para classe *CCUtilizador* o nome do ficheiro seria : ***ccutilizador.py*** 
-
+- R.2.3 : Nome do ficheiro de uma classe é simplesmente o nome da classe mas tudo em minúsculo. Por exemplo para classe *CCUtilizador* o nome do ficheiro seria : ***ccutilizador.py*** 
