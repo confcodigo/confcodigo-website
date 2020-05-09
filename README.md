@@ -2,7 +2,7 @@
 Desenvolvimento do site para gerir as conferências, proposições de temas,  inscrições  para assitir as apresentações de temas etc, etc ..
  
  <img width="880" height = "200" alt = "Conferencia Codigo"
-    src="https://github.com/confcodigo/confcodigo-website/blob/master/logo/confcodigo.png">
+    src="https://github.com/confcodigo/confcodigo-website/blob/master/logo/confcodigo.jpg">
 
 # Índice
 - ## [Introdução](#intro)
