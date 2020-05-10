@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `confcodigo`.`membro` (
   `palavra_passe` VARCHAR(300) NULL,
   `codigo_verificacao` VARCHAR(300) NULL,
   `data_expiracao_codigo` DATETIME NULL,
-  `data_entrada` DATETIME NULL,
+  `data_entrada` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` TINYINT(0) NULL,
   `e_membro` TINYINT(0) NULL,
   `telefone` VARCHAR(9) NULL,
@@ -134,13 +134,13 @@ CREATE TABLE IF NOT EXISTS `confcodigo`.`proposicao` (
   `descricao` LONGTEXT NULL,
   `tags` VARCHAR(100) NULL,
   `link_doc` VARCHAR(300) NULL,
-  `data_criacao` DATETIME NULL,
+  `data_criacao` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `data_aprovacao` DATETIME NULL,
   `estado` ENUM('aprovado , reprovado, em analise,submetido') NULL,
   `duracao_prevista` INT NULL,
-  `decido_por` VARCHAR(50) NULL,
   `id_membro` INT NOT NULL,
-  `id_conferencia` INT NOT NULL,
+  `id_conferencia` INT NULL,
+  `decidido_por` INT NULL,
   PRIMARY KEY (`id_proposicao`),
   UNIQUE INDEX `id_proposicao_UNIQUE` (`id_proposicao` ASC),
   INDEX `tema` (`tema` ASC),
@@ -149,6 +149,7 @@ CREATE TABLE IF NOT EXISTS `confcodigo`.`proposicao` (
   INDEX `estado` (`estado` ASC),
   INDEX `fk_proposicao_membro1_idx` (`id_membro` ASC),
   INDEX `fk_proposicao_conferencia1_idx` (`id_conferencia` ASC),
+  INDEX `fk_proposicao_membro2_idx` (`decidido_por` ASC),
   CONSTRAINT `fk_proposicao_membro1`
     FOREIGN KEY (`id_membro`)
     REFERENCES `confcodigo`.`membro` (`id_membro`)
@@ -157,6 +158,11 @@ CREATE TABLE IF NOT EXISTS `confcodigo`.`proposicao` (
   CONSTRAINT `fk_proposicao_conferencia1`
     FOREIGN KEY (`id_conferencia`)
     REFERENCES `confcodigo`.`conferencia` (`id_conferencia`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_proposicao_membro2`
+    FOREIGN KEY (`decidido_por`)
+    REFERENCES `confcodigo`.`membro` (`id_membro`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -200,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `confcodigo`.`voto` (
   `i_dvoto` INT NOT NULL AUTO_INCREMENT,
   `nota` TINYINT(4) NULL,
   `comentatio` VARCHAR(300) NULL,
-  `data` DATETIME NULL,
+  `data` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_proposicao` INT NOT NULL,
   PRIMARY KEY (`i_dvoto`),
   UNIQUE INDEX `i_dvoto_UNIQUE` (`i_dvoto` ASC),
@@ -220,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `confcodigo`.`avaliacao` (
   `id_avaliacao` INT NOT NULL AUTO_INCREMENT,
   `nota` TINYINT(4) NULL,
   `comentatio` VARCHAR(300) NULL,
-  `data` DATETIME NULL,
+  `data` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_proposicao` INT NOT NULL,
   `id_membro` INT NOT NULL,
   PRIMARY KEY (`id_avaliacao`),
@@ -247,6 +253,7 @@ CREATE TABLE IF NOT EXISTS `confcodigo`.`proposta` (
   `tags` VARCHAR(100) NULL,
   `id_membro` INT NOT NULL,
   `id_conferencia` INT NOT NULL,
+  `data_criacao` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_proposta`, `id_membro`),
   INDEX `fk_proposta_membro1_idx` (`id_membro` ASC),
   INDEX `fk_proposta_conferencia1_idx` (`id_conferencia` ASC),
