@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema confcodigo
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema confcodigo
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `confcodigo` DEFAULT CHARACTER SET utf8 ;
+USE `confcodigo` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`membro`
+-- Table `confcodigo`.`membro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`membro` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`membro` (
   `id_membro` INT NOT NULL AUTO_INCREMENT,
   `primeiro_nome` VARCHAR(45) NULL,
   `ultimo_nome` VARCHAR(45) NULL,
@@ -42,9 +42,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`funcao`
+-- Table `confcodigo`.`funcao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`funcao` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`funcao` (
   `nome` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`nome`),
   UNIQUE INDEX `id_funcao_UNIQUE` (`nome` ASC))
@@ -52,9 +52,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`permissao`
+-- Table `confcodigo`.`permissao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`permissao` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`permissao` (
   `nome` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`nome`),
   UNIQUE INDEX `nome_UNIQUE` (`nome` ASC))
@@ -62,9 +62,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`permissao_funcao`
+-- Table `confcodigo`.`permissao_funcao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`permissao_funcao` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`permissao_funcao` (
   `permissao_nome` VARCHAR(50) NOT NULL,
   `funcao_nome` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`permissao_nome`, `funcao_nome`),
@@ -72,21 +72,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`permissao_funcao` (
   INDEX `fk_permissao_has_funcao_permissao1_idx` (`permissao_nome` ASC),
   CONSTRAINT `fk_permissao_has_funcao_permissao1`
     FOREIGN KEY (`permissao_nome`)
-    REFERENCES `mydb`.`permissao` (`nome`)
+    REFERENCES `confcodigo`.`permissao` (`nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_permissao_has_funcao_funcao1`
     FOREIGN KEY (`funcao_nome`)
-    REFERENCES `mydb`.`funcao` (`nome`)
+    REFERENCES `confcodigo`.`funcao` (`nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`membro_funcao`
+-- Table `confcodigo`.`membro_funcao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`membro_funcao` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`membro_funcao` (
   `membro_id_membro` INT NOT NULL,
   `funcao_nome` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`membro_id_membro`, `funcao_nome`),
@@ -94,21 +94,41 @@ CREATE TABLE IF NOT EXISTS `mydb`.`membro_funcao` (
   INDEX `fk_membro_has_funcao_membro1_idx` (`membro_id_membro` ASC),
   CONSTRAINT `fk_membro_has_funcao_membro1`
     FOREIGN KEY (`membro_id_membro`)
-    REFERENCES `mydb`.`membro` (`id_membro`)
+    REFERENCES `confcodigo`.`membro` (`id_membro`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_membro_has_funcao_funcao1`
     FOREIGN KEY (`funcao_nome`)
-    REFERENCES `mydb`.`funcao` (`nome`)
+    REFERENCES `confcodigo`.`funcao` (`nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`proposicao`
+-- Table `confcodigo`.`conferencia`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`proposicao` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`conferencia` (
+  `id_conferencia` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(100) NULL,
+  `descricao` LONGTEXT NULL,
+  `ano` INT NULL,
+  `semestre` TINYINT(4) NULL,
+  `data` DATE NULL,
+  `data_inicio` DATETIME NULL,
+  `data_fim` DATETIME NULL,
+  PRIMARY KEY (`id_conferencia`),
+  UNIQUE INDEX `id_conferencia_UNIQUE` (`id_conferencia` ASC),
+  INDEX `datainiconf` (`data_inicio` ASC),
+  INDEX `datafimconf` (`data_fim` ASC),
+  INDEX `titconf` (`titulo` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `confcodigo`.`proposicao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `confcodigo`.`proposicao` (
   `id_proposicao` INT NOT NULL AUTO_INCREMENT,
   `tema` VARCHAR(100) NULL,
   `descricao` LONGTEXT NULL,
@@ -120,25 +140,32 @@ CREATE TABLE IF NOT EXISTS `mydb`.`proposicao` (
   `duracao_prevista` INT NULL,
   `decido_por` VARCHAR(50) NULL,
   `id_membro` INT NOT NULL,
+  `id_conferencia` INT NOT NULL,
   PRIMARY KEY (`id_proposicao`),
   UNIQUE INDEX `id_proposicao_UNIQUE` (`id_proposicao` ASC),
   INDEX `tema` (`tema` ASC),
   INDEX `tags` (`tags` ASC),
-  INDEX `descricao` (`descricao` ASC),
+  FULLTEXT INDEX `descricao` (`descricao` ASC),
   INDEX `estado` (`estado` ASC),
   INDEX `fk_proposicao_membro1_idx` (`id_membro` ASC),
+  INDEX `fk_proposicao_conferencia1_idx` (`id_conferencia` ASC),
   CONSTRAINT `fk_proposicao_membro1`
     FOREIGN KEY (`id_membro`)
-    REFERENCES `mydb`.`membro` (`id_membro`)
+    REFERENCES `confcodigo`.`membro` (`id_membro`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_proposicao_conferencia1`
+    FOREIGN KEY (`id_conferencia`)
+    REFERENCES `confcodigo`.`conferencia` (`id_conferencia`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`apresentacao_participante`
+-- Table `confcodigo`.`apresentacao_participante`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`apresentacao_participante` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`apresentacao_participante` (
   `proposicao_id_proposicao` INT NOT NULL,
   `membro_id_membro` INT NOT NULL,
   `semestre` TINYINT(4) NULL,
@@ -155,21 +182,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`apresentacao_participante` (
   INDEX `data_fim` (`data_fim` ASC),
   CONSTRAINT `fk_proposicao_has_membro_proposicao1`
     FOREIGN KEY (`proposicao_id_proposicao`)
-    REFERENCES `mydb`.`proposicao` (`id_proposicao`)
+    REFERENCES `confcodigo`.`proposicao` (`id_proposicao`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_proposicao_has_membro_membro1`
     FOREIGN KEY (`membro_id_membro`)
-    REFERENCES `mydb`.`membro` (`id_membro`)
+    REFERENCES `confcodigo`.`membro` (`id_membro`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`voto`
+-- Table `confcodigo`.`voto`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`voto` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`voto` (
   `i_dvoto` INT NOT NULL AUTO_INCREMENT,
   `nota` TINYINT(4) NULL,
   `comentatio` VARCHAR(300) NULL,
@@ -180,16 +207,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`voto` (
   INDEX `fk_voto_proposicao1_idx` (`id_proposicao` ASC),
   CONSTRAINT `fk_voto_proposicao1`
     FOREIGN KEY (`id_proposicao`)
-    REFERENCES `mydb`.`proposicao` (`id_proposicao`)
+    REFERENCES `confcodigo`.`proposicao` (`id_proposicao`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`avaliacao`
+-- Table `confcodigo`.`avaliacao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`avaliacao` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`avaliacao` (
   `id_avaliacao` INT NOT NULL AUTO_INCREMENT,
   `nota` TINYINT(4) NULL,
   `comentatio` VARCHAR(300) NULL,
@@ -204,26 +231,33 @@ CREATE TABLE IF NOT EXISTS `mydb`.`avaliacao` (
   INDEX `fk_avaliacao_apresentacao_participante1_idx` (`id_proposicao` ASC, `id_membro` ASC),
   CONSTRAINT `fk_avaliacao_apresentacao_participante1`
     FOREIGN KEY (`id_proposicao` , `id_membro`)
-    REFERENCES `mydb`.`apresentacao_participante` (`proposicao_id_proposicao` , `membro_id_membro`)
+    REFERENCES `confcodigo`.`apresentacao_participante` (`proposicao_id_proposicao` , `membro_id_membro`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`proposta`
+-- Table `confcodigo`.`proposta`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`proposta` (
+CREATE TABLE IF NOT EXISTS `confcodigo`.`proposta` (
   `id_proposta` INT NOT NULL,
   `tema` VARCHAR(100) NULL,
   `descricao` LONGTEXT NULL,
   `tags` VARCHAR(100) NULL,
   `id_membro` INT NOT NULL,
+  `id_conferencia` INT NOT NULL,
   PRIMARY KEY (`id_proposta`, `id_membro`),
   INDEX `fk_proposta_membro1_idx` (`id_membro` ASC),
+  INDEX `fk_proposta_conferencia1_idx` (`id_conferencia` ASC),
   CONSTRAINT `fk_proposta_membro1`
     FOREIGN KEY (`id_membro`)
-    REFERENCES `mydb`.`membro` (`id_membro`)
+    REFERENCES `confcodigo`.`membro` (`id_membro`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_proposta_conferencia1`
+    FOREIGN KEY (`id_conferencia`)
+    REFERENCES `confcodigo`.`conferencia` (`id_conferencia`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
