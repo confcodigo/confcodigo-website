@@ -117,6 +117,7 @@ CREATE TABLE IF NOT EXISTS `confcodigo`.`conferencia` (
   `data` DATE NULL,
   `data_inicio` DATETIME NULL,
   `data_fim` DATETIME NULL,
+  `localizacao` LONGTEXT NULL,
   PRIMARY KEY (`id_conferencia`),
   UNIQUE INDEX `id_conferencia_UNIQUE` (`id_conferencia` ASC),
   INDEX `datainiconf` (`data_inicio` ASC),
@@ -265,6 +266,136 @@ CREATE TABLE IF NOT EXISTS `confcodigo`.`proposta` (
   CONSTRAINT `fk_proposta_conferencia1`
     FOREIGN KEY (`id_conferencia`)
     REFERENCES `confcodigo`.`conferencia` (`id_conferencia`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `confcodigo`.`pagina`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `confcodigo`.`pagina` (
+  `id_pagina` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(100) NULL,
+  `link_icon` VARCHAR(300) NULL,
+  `e_index` TINYINT(1) NULL DEFAULT 0,
+  `activo` ENUM('sim', 'nao') NULL DEFAULT 'sim',
+  `meu_link` VARCHAR(100) NULL,
+  `meu_template_html` VARCHAR(100) NULL,
+  PRIMARY KEY (`id_pagina`),
+  UNIQUE INDEX `id_pagina_UNIQUE` (`id_pagina` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `confcodigo`.`menu`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `confcodigo`.`menu` (
+  `id_menu` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NULL,
+  `link` VARCHAR(100) NULL,
+  `template_html` VARCHAR(100) NULL,
+  `activo` ENUM('sim', 'nao') NULL DEFAULT 'sim',
+  PRIMARY KEY (`id_menu`),
+  UNIQUE INDEX `id_menu_UNIQUE` (`id_menu` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `confcodigo`.`submenu`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `confcodigo`.`submenu` (
+  `id_submenu` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NULL,
+  `link` VARCHAR(100) NULL,
+  `activo` ENUM('sim', 'nao') NULL DEFAULT 'sim',
+  `template_html` VARCHAR(100) NULL,
+  PRIMARY KEY (`id_submenu`),
+  UNIQUE INDEX `id_submenu_UNIQUE` (`id_submenu` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `confcodigo`.`conteudo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `confcodigo`.`conteudo` (
+  `id_conteudo` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(300) NULL,
+  `subtiulo` VARCHAR(300) NULL,
+  `trecho` LONGTEXT NULL,
+  `conteudo` LONGTEXT NULL,
+  PRIMARY KEY (`id_conteudo`),
+  UNIQUE INDEX `id_conteudo_UNIQUE` (`id_conteudo` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `confcodigo`.`pagina_conteudo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `confcodigo`.`pagina_conteudo` (
+  `id_pagina` INT NOT NULL,
+  `id_conteudo` INT NOT NULL,
+  `ordem` INT NOT NULL,
+  `posicao` ENUM('esquerda', 'centro', 'diraita') NOT NULL,
+  PRIMARY KEY (`id_pagina`, `id_conteudo`, `ordem`, `posicao`),
+  INDEX `fk_pagina_has_conteudo_conteudo1_idx` (`id_conteudo` ASC),
+  INDEX `fk_pagina_has_conteudo_pagina1_idx` (`id_pagina` ASC),
+  CONSTRAINT `fk_pagina_has_conteudo_pagina1`
+    FOREIGN KEY (`id_pagina`)
+    REFERENCES `confcodigo`.`pagina` (`id_pagina`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pagina_has_conteudo_conteudo1`
+    FOREIGN KEY (`id_conteudo`)
+    REFERENCES `confcodigo`.`conteudo` (`id_conteudo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `confcodigo`.`pagina_menu`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `confcodigo`.`pagina_menu` (
+  `id_pagina` INT NOT NULL,
+  `id_menu` INT NOT NULL,
+  `posicao` ENUM('esquerda', 'centro', 'direito') NOT NULL,
+  `ordem` INT NOT NULL,
+  PRIMARY KEY (`id_pagina`, `id_menu`, `posicao`, `ordem`),
+  INDEX `fk_pagina_has_menu_menu1_idx` (`id_menu` ASC),
+  INDEX `fk_pagina_has_menu_pagina1_idx` (`id_pagina` ASC),
+  CONSTRAINT `fk_pagina_has_menu_pagina1`
+    FOREIGN KEY (`id_pagina`)
+    REFERENCES `confcodigo`.`pagina` (`id_pagina`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pagina_has_menu_menu1`
+    FOREIGN KEY (`id_menu`)
+    REFERENCES `confcodigo`.`menu` (`id_menu`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `confcodigo`.`menu_submenu`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `confcodigo`.`menu_submenu` (
+  `id_menu` INT NOT NULL,
+  `id_submenu` INT NOT NULL,
+  `ordem` INT NOT NULL,
+  `posicao` ENUM('esquerda', 'centro', 'direita') NOT NULL,
+  PRIMARY KEY (`id_menu`, `id_submenu`, `ordem`, `posicao`),
+  INDEX `fk_menu_has_submenu_submenu1_idx` (`id_submenu` ASC),
+  INDEX `fk_menu_has_submenu_menu1_idx` (`id_menu` ASC),
+  CONSTRAINT `fk_menu_has_submenu_menu1`
+    FOREIGN KEY (`id_menu`)
+    REFERENCES `confcodigo`.`menu` (`id_menu`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_menu_has_submenu_submenu1`
+    FOREIGN KEY (`id_submenu`)
+    REFERENCES `confcodigo`.`submenu` (`id_submenu`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
