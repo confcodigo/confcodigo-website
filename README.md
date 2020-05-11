@@ -148,4 +148,16 @@ Nome do ficheiro : *ccutilizador.py*
 class CCUtilizador(object):
     pass
 ```
-- R.2.3 : Nome do ficheiro de uma classe é simplesmente o nome da classe mas tudo em minúsculo. Por exemplo para classe *CCUtilizador* o nome do ficheiro seria : ***ccutilizador.py*** 
+- R.2.3 : Nome de funções devem também começar com **CC** e seguido do nome desejado, a primeira letra do nome desejado da função deve ser minúscula. Se o nome da função for composição de duas ou mais palavras, então, o princípio de cada nova palavra deve começar com maiúscula. Por exemplo, se tivermos a escrever uma função que calcula a duração de uma apresentação  de um tema, o nome poderia ser *duração da apresentação*, em código deveria ser escrito assim :
+```python
+def CCduracaoApresentacao(inicio, fim):
+    return fim - inicio
+```
+- R.2.4 : Nome do ficheiro de um módulo, classe ou função é simplesmente o nome do (módulo, classe ou função) mas tudo em minúsculo. Por exemplo para classe *CCUtilizador* o nome do ficheiro seria : ***ccutilizador.py*** 
+
+- R.2.5 : Nome de constantes devem ser tudo em maiúsculas, devem começar com **CC** , ser seguido de um underscore " _ " e seguido do nome desejado. Se o nome desejado da constante for composto de duas ou mais palavras, então as palavras devem ser separadas por underscore " _ ".
+Por exemplo, se estivermos a definir uma constante que representará a duração máxima  que uma apresentação deve fazer, o nome poderia ser *duração máxima de uma apresentação*, em código deveria ser assim :
+```python
+CC_DURACAO_MAXIMA_APRESENTAO = 1
+```
+
