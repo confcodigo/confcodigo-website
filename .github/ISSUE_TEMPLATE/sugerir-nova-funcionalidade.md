@@ -1,23 +1,23 @@
 ---
 name: Sugerir nova funcionalidade
 about: Sugerir uma ideia para este projeto
-title: "[Sugestação]"
+title: "Sugestação"
 labels: Nova funcionalidade
 assignees: ''
 
 ---
 
-**O seu pedido de aumento de funcionalidades está relacionado com um problema? Por favor, descreva.**
+**Qual funcionalidade desejaria ter ou que seja melhorada ?**
 
-Uma descrição clara e concisa de qual é o problema. Ex. Fico sempre frustrado quando [...]
+Coloque aqui uma descrição clara e concisa da funcionalidade ou a sugestão. Ex: Fico sempre frustrado quando [...]
 
-**Descreva a solução ou funcionalida que pretende**
+**Como deve ser implementada a solução desta nova funcionalidade que pretende ?**
 
-Uma descrição clara e concisa do que se pretende que aconteça ou que funcione.
+Coloque aqui uma descrição clara e concisa do que pretende que aconteça ou que funcione.
 
-**Descreva as alternativas que você considerou**
+**Quais são as alternativas que você considerou ?**
 
-Uma descrição clara e concisa de quaisquer soluções ou características alternativas que tenha considerado.
+Coloque aqui uma descrição clara e concisa de quaisquer soluções ou características alternativas que tenha considerado.
 
 **Contextos adicionais**
 
