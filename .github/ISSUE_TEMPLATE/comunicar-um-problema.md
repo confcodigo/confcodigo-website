@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-**Qual problema deseja comunicar**
+**Qual problema deseja comunicar ?**
 
 Coloque aqui uma descrição clara do problema...
 
@@ -19,7 +19,7 @@ Coloque aqui os passos para reproduzir o problema: por exemplo
 3. Baixa até '....'
 4. Veja o erro
 
-**Comportando esperado**
+**Qual comportamento espera ?**
 
 Coloque aqui exactamente o que você resultado que esperava.
 
