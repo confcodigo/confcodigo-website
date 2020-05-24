@@ -111,6 +111,7 @@ E por último lançar o website *confcodigo*
 
 (venv)$flask run
 ```
+Seu website pode ser acessado apartir do navegador com este link  : http://127.0.0.1:5000/
 
 # <a name="contr"></a> Contribuir
 
