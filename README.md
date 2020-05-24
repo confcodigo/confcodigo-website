@@ -8,6 +8,7 @@ Desenvolvimento do site para gerir as conferências, proposições de temas,  in
 - ## [Introdução](#intro)
 - ## [Descrição](#descr)
 - ## [Requisitos necessidades e especificações](#rne)
+- ## [Instalação, configuração e lançamento](#instalar)
 - ## [Convenções e estilo de programação](#guia)
 - ## [Contribuir](#contr)
 
@@ -76,6 +77,40 @@ Para saber exatamente o que falta ser implementado e como deve funcionar o websi
 
 
 Para obter mais detalhes sobre as funcionalidades a implementar consulta a lista de User Story a concretizar aqui : [TODO LIST](https://github.com/confcodigo/confcodigo-website/projects/1) 
+
+# <a name="instalar"></a> Instalação, configuração e lançamento
+Para instalar confcodigo-website voce precisa efectuar tres ações : fazer o fork do **projeto**, instalar **python** (versão 3.6 ou superior), criar um **venv**(ambiente virtual) e instalar o framewo **Flask**.
+
+- 1° Fork ou clonagem do projeto
+```
+$sudo git clone https://github.com/confcodigo/confcodigo-website.git
+```
+- 2° Instalar python
+```
+$sudo apt-get install python3
+```
+- 2° Criar um ambiente virtual (venv) e instalar o Flask 
+O ambiente virtual a criar deve estar na mesma raiz(pasta) onde estiver o projeto forkado (*confcodigo-website*)
+
+Instalar **venv**, neste evexemplo vamos criar um abiente virtual com o nome de *venv*
+```
+$sudo python3 -m venv venv
+
+$ls
+confcodigo-websiste venv
+```
+- 3° Instalar o Flask( se o ficheiro **requirements.txt** existir, aconselhamos a instalar todas dependências existente nele). Para instalar o *Flask* é preciso antes activar o ambiente virtual.
+```
+$ . venv/bin/acivate
+
+(venv)$ pip install flask
+```
+E por último lançar o website *confcodigo*
+```
+(venv)$export FLASK_APP=confcodigo-website
+
+(venv)$flask run
+```
 
 # <a name="contr"></a> Contribuir
 
