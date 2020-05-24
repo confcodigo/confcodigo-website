@@ -1,19 +1,19 @@
 ---
 name: Comunicar um problema
 about: Comunicar um problema (BUG)
-title: "[Problema]"
+title: "Problema"
 labels: bug
 assignees: ''
 
 ---
 
-**Descreva o problema**
+**Qual problema deseja comunicar**
 
-Uma descrição clara do problema.
+Coloque aqui uma descrição clara do problema...
 
-**Para reproduzir**
+**Como fazer para reproduzir o problema ?**
 
-Descreva os passos para reproduzir o problema:
+Coloque aqui os passos para reproduzir o problema: por exemplo
 1. Vai para '...'
 2. Clicque na '....'
 3. Baixa até '....'
@@ -21,25 +21,25 @@ Descreva os passos para reproduzir o problema:
 
 **Comportando esperado**
 
-Descreva exactamente o que você espera que aconteça.
+Coloque aqui exactamente o que você resultado que esperava.
 
 **Capturas de ecrãs**
 
-Se aplicável, adicione screenshots para ajudar a explicar o seu problema.
+Se aplicável, adicione aqui screenshots para ajudar a entender o seu problema.
 
-**Desktop (Por favor complete as seguintes informações):**
+**Desktop (Por favor complete as seguintes informações abaixo ):**
 
- - OS: [ex: Windows]
- - Navegador web [ex: chrome, safari]
- - Versão [ex: 22]
+ - OS: [ex: Windows] ?
+ - Navegador web [ex: chrome, safari] ?
+ - Versão [ex: 22] ?
 
 **Smartfone (Por favor complete as seguintes informações):**
 
- - Dispositivo: [e.g. iPhone6]
+ - Dispositivo: [e.g. iPhone6] ?
  - OS: [ex: iOS8.1]
- - Navegador [ex: safari, chrome]
- - Versão[ex: 22]
+ - Navegador [ex: safari, chrome] ?
+ - Versão[ex: 22] ?
 
 **Contextos adicionais**
 
-Adicione outros contextos relacionados ao problema.
+Adicione aqui outras Capturas de ecrãs relacionados ao problema.
