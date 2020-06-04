@@ -1,0 +1,2 @@
+from basededado.contextobd import *
+
