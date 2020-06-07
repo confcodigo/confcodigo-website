@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+       {% block titulo %}  {% endblock titulo %} 
+    </title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />  
+    {% block inclusoes %} 
+        {% include 'ccinclusoes.html' %}
+    {% endblock inclusoes %}
+
+    {% block estilosCSS %} <style></style> {% endblock estilosCSS %}
+</head>
+<body>
+<div id="wrapper1">
+{% block menuEntrarRegistrar %} 
+    <div class="icones-topo">
+		<ul>
+			<li><h2><a href="autenticacao.html"><span class="icon icon-user"></span>Entrar</a></h3></li>
+			<li><h2><a href="autenticacao.html"><span class="icon icon-edit"></span>Registrar-se</a></h3></li>
+		</ul>
+	</div>
+{% endblock menuEntrarRegistrar %}
+{% block cabecalho %} {% include 'cccabecalho.html' %} {% endblock cabecalho %}
+
+{% block conteudo %} {% include 'ccconteudo.html' %} {% endblock conteudo %}
+</div>
+
+{% block  rodape %} {%include 'ccrodape.html'%} {% endblock rodape %}
+
+<div id="copyright" class="container">
+	<p>&copy;2020 Confcódigo. Todos direitos reservados. | Desenvolvido por <a href="http://fotogrph.com/">AC</a> | Desenvolvido por <a href="http://templated.co" rel="nofollow">FM</a>.</p>
+</div>
+{%  block scriptsJS %} {% endblock scriptsJS  %}
+</body>
+</html>
